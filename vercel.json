@@ -11,22 +11,11 @@
       "use": "@vercel/node"
     },
     {
-      "src": "Frontend/index.html",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "Frontend/dist"
-      }
+      "src": "Frontend/dist/**",
+      "use": "@vercel/static"
     }
   ],
-  "installCommand": "npm install --prefix=Backend && npm install --prefix=Frontend",
-  "routes": [
-    {
-      "src": "/Backend/(.*)",
-      "dest": "/Backend/src/server.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/Frontend/$1"
-    }
-  ]
+  "installCommand": "npm install --prefix=./Backend && npm install --prefix=./Frontend",
+  "buildCommand": "npm run build --prefix=./Frontend",
+  "devCommand": "npm run dev --prefix=./Frontend"
 }
