@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/ai/(.*)",
-      "destination": "/Backend/src/server.js"
+      "destination": "/Backend/src/app.js"
     },
     {
       "source": "/(.*)",
@@ -11,7 +11,7 @@
   ],
   "builds": [
     {
-      "src": "Backend/src/server.js",
+      "src": "Backend/src/app.js",
       "use": "@vercel/node"
     },
     {
