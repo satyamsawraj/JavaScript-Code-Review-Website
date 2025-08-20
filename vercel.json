@@ -3,6 +3,10 @@
     {
       "source": "/api/(.*)",
       "destination": "/Backend/src/server.js"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/Frontend/$1"
     }
   ],
   "builds": [
@@ -11,13 +15,14 @@
       "use": "@vercel/node"
     },
     {
-      "src": "Frontend/index.html",
+      "src": "Frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "Frontend/dist"
+        "installCommand": "npm install",
+        "buildCommand": "npm run build"
       }
     }
   ],
-  "installCommand": "npm install --prefix=./Backend && npm install --prefix=./Frontend",
+  "installCommand": "npm install --prefix=./Frontend && npm install --prefix=./Backend",
   "buildCommand": "npm run build --prefix=./Frontend"
 }
