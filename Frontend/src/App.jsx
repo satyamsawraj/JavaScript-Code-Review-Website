@@ -21,7 +21,7 @@ function App() {
 
   async function reviewCode() {
     // Use the relative path to your API endpoint
-    const response = await axios.post('/api/get-review', { code });
+    const response = await axios.post('/ai/get-review', { code });
     setReview(response.data);
   }
 
