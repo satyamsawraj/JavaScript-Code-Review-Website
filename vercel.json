@@ -1,0 +1,32 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/Backend/src/server.js"
+    }
+  ],
+  "builds": [
+    {
+      "src": "Backend/src/server.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "Frontend/index.html",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "Frontend/dist"
+      }
+    }
+  ],
+  "installCommand": "npm install --prefix=Backend && npm install --prefix=Frontend",
+  "routes": [
+    {
+      "src": "/Backend/(.*)",
+      "dest": "/Backend/src/server.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/Frontend/$1"
+    }
+  ]
+}
